@@ -75,7 +75,7 @@ app.get('/products/', (req, res) => {
 app.post('/products/add', (req, res) => {
     Product.create({
         name: req.body.name,
-        price: req.body.price
+        price: req.body.price,
     })
         .then((result) => res.json(result))
         .catch((err) => console.log(err));
@@ -85,10 +85,10 @@ app.post('/products/add', (req, res) => {
 app.put('/products/edit/:id', (req, res) => {
     Product.update({
         name: req.body.name,
-        price: req.body.price
+        price: req.body.price,
     },
         {
-            where: { id: req.params.id }
+            where: { id: req.params.id },
         })
         .then(() => res.json('Обновление выполнено.'))
         .catch((err) => console.log(err));
@@ -97,14 +97,14 @@ app.put('/products/edit/:id', (req, res) => {
 // 4. УДАЛЕНИЕ информации по ID.
 app.delete('/products/delete/:id', (req, res) => {
     Product.destroy({
-        where: { id: req.params.id }
+        where: { id: req.params.id },
     })
         .then(() => res.json('Удаление выполнено.'))
         .catch((err) => console.log(err));
 });
 
 
-// // SEEDS
-// Product.create({ name: 'Intel Core i5-2500K', price: '1000' });
-// Product.create({ name: 'AMD Ryzen 3 3600', price: '5600' });
-// Product.create({ name: 'NVIDIA GeForce GTX 1050Ti', price: '4000' });
+// SEEDS
+Product.create({ name: 'Intel Core i5-2500K', price: '1000' });
+Product.create({ name: 'AMD Ryzen 3 3600', price: '5600' });
+Product.create({ name: 'NVIDIA GeForce GTX 1050Ti', price: '4000' });
