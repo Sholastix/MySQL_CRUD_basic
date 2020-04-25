@@ -72,7 +72,7 @@ app.get('/products/', (req, res) => {
 });
 
 // 2. ДОБАВЛЕНИЕ в список новых продуктов.
-app.post('/products/add', (req, res) => {
+app.post('/products/create', (req, res) => {
     Product.create({
         name: req.body.name,
         price: req.body.price,
@@ -82,7 +82,7 @@ app.post('/products/add', (req, res) => {
 });
 
 // 3. РЕДАКТИРОВАНИЕ информации по ID.
-app.put('/products/edit/:id', (req, res) => {
+app.put('/products/update/:id', (req, res) => {
     Product.update({
         name: req.body.name,
         price: req.body.price,
