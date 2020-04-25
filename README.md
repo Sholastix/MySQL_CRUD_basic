@@ -19,10 +19,10 @@ __________________________________________________________________
 
 4.  Пути для POSTMAN:
 
-        http://localhost:3000/products/             - ПОЛУЧЕНИЕ (GET) списка продуктов по запросу.
-        http://localhost:3000/products/add          - ДОБАВЛЕНИЕ (POST) в список новых продуктов.
-        http://localhost:3000/products/edit/:id     - РЕДАКТИРОВАНИЕ (PUT) информации по ID.
-        http://localhost:3000/products/delete/:id   - УДАЛЕНИЕ (DELETE) информации по ID.
+        http://localhost:3000/products/               - ПОЛУЧЕНИЕ (GET) списка продуктов по запросу.
+        http://localhost:3000/products/create         - ДОБАВЛЕНИЕ (POST) в список новых продуктов.
+        http://localhost:3000/products/update/:id     - РЕДАКТИРОВАНИЕ (PUT) информации по ID.
+        http://localhost:3000/products/delete/:id     - УДАЛЕНИЕ (DELETE) информации по ID.
 
 При добавлении и изменении информации в настройках POSTMAN указывать формат JSON.
 
