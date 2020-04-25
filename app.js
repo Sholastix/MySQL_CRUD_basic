@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Создаём БД в MySQL.
-const dbName = process.env.DB_SCHEMAS || 'crud';
+const dbName = process.env.DB_SCHEMA || 'crud';
 
 mysql.createConnection({
     host: process.env.DB_HOST || '127.0.0.1',
@@ -31,18 +31,6 @@ const sequelize = new Sequelize('crud', 'root', '', {
     },
 });
 
-// Создаём переменную, содержащую значение порта подключения.
-const PORT = 3000;
-
-// Cинхронизация с БД, при успешной синхронизации запускаем сервер.
-sequelize.sync()
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server listening on port ${PORT}.`);
-        });
-    })
-    .catch((err) => console.log(err));
-
 // Создаём модель для БД.
 const Product = sequelize.define('product', {
     id: {
@@ -62,6 +50,18 @@ const Product = sequelize.define('product', {
         allowNull: false,
     },
 });
+
+// Создаём переменную, содержащую значение порта подключения.
+const PORT = 3000;
+
+// Cинхронизация с БД, при успешной синхронизации запускаем сервер.
+sequelize.sync()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server listening on port ${PORT}.`);
+        });
+    })
+    .catch((err) => console.log(err));
 
 // Создаём HTTP-запросы:
 // 1. ПОЛУЧЕНИЕ полного списка продуктов.
@@ -102,7 +102,6 @@ app.delete('/products/delete/:id', (req, res) => {
         .then(() => res.json('Удаление выполнено.'))
         .catch((err) => console.log(err));
 });
-
 
 // SEEDS
 Product.create({ name: 'Intel Core i5-2500K', price: '1000' });
