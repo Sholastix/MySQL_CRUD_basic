@@ -47,8 +47,13 @@ const productPut = async (req, res) => {
         const { id } = req.params;
         const { name, price } = req.body;
         const product = await Product.update({ name, price }, { where: { id } });
-        console.log(product);
-        res.json(product);
+
+        // This code only for displaying already updated product instead of simple [0] or [1].
+        const updatedProduct = await Product.findOne({ where: { id } });
+        //
+        
+        console.log(updatedProduct);
+        res.json(updatedProduct);
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
@@ -72,7 +77,6 @@ const productDelete = async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.destroy({ where: { id } });
-        console.log(product);
         res.json(product);
     } catch (err) {
         console.error(err);

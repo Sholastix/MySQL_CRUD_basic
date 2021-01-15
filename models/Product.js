@@ -14,6 +14,7 @@ module.exports.Product = db.define('product', {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
     },
 
     price: {
