@@ -67,6 +67,13 @@ const productPut = async (req, res) => {
     //     {
     //         where: { id: req.params.id },
     //     })
+
+    //     // This code only for displaying already updated product instead of simple [0] or [1].
+    //     .then(() => {
+    //         return Product.findOne({ where: { id: req.params.id } });
+    //     })
+    //     //
+    
     //     .then((result) => res.json(result))
     //     .catch((err) => console.error(err));
 };

@@ -38,11 +38,3 @@ const PORT = 5000;
 //         })
 //         .catch((err) => console.error(`Connection failed at port: ${PORT}`, err));
 // }());
-
-
-// SEEDS
-const { Product } = require('./models/Product');
-
-Product.create({ name: 'Intel Core i5-2500K', price: '1000' });
-Product.create({ name: 'AMD Ryzen 3 3600', price: '5600' });
-Product.create({ name: 'NVIDIA GeForce GTX 1050Ti', price: '4000' });
