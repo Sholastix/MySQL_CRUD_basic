@@ -2,17 +2,16 @@ const mysql = require('mysql2/promise');
 
 // Create DB in MySQL.
 (async function (req, res) {
-    const dbName = 'crud';
     // VARIANT 1: TRY-CATCH Syntax
     try {
         const connection = await mysql.createConnection({
-            host: '127.0.0.1',
-            port: '3306',
-            user: 'root',
-            password: '',
+            host: process.env.DB_HOST,
+            port: process.env.DB_PORT,
+            user: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
         })
-        connection.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`);
-        console.log('Database successfully created or already exist.');
+        connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`);
+        console.log(`Database ${process.env.DB_NAME} successfully created or already exist.`);
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
@@ -20,15 +19,15 @@ const mysql = require('mysql2/promise');
 
     // // VARIANT 2: THEN-CATCH Syntax
     // await mysql.createConnection({
-    //     host: '127.0.0.1',
-    //     port: '3306',
-    //     user: 'root',
-    //     password: '',
+    //     host: process.env.DB_HOST,
+    //     port: process.env.DB_PORT,
+    //     user: process.env.DB_USERNAME,
+    //     password: process.env.DB_PASSWORD,
     // })
     //     .then((connection) => {
-    //         connection.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`)
+    //         connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`)
     //             .then((result) => {
-    //                 console.log('Database successfully created or already exist.', result);
+    //                 console.log(`Database ${process.env.DB_NAME} successfully created or already exist.`);
     //             });
     //     })
     //     .catch((err) => console.error(err));
